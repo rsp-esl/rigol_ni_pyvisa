@@ -51,7 +51,7 @@ if len(devices) > 0:
         print ('>>', device)
         device = device.replace('::',',')
         fields = device.split(',')
-        if len(fields) == 5:
+        if len(fields) == 5 and fields[3].startswith('DG'):
             vendor_id = fields[1]
             device_id = fields[2]
             instr_model = fields[3]      
