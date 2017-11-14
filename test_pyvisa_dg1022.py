@@ -9,8 +9,8 @@
 ############################################################################
 # Short Description:
 #   This Python script is used to demonstrate how to program 
-#   the Rigol DG1022 function generator via USB. It will command the
-#   instrument to generate a sinusoidal waveform with different frequencies.
+#   the Rigol DG1022 function generator via USB. It will generate
+#   sinusiodal waveform on the output channel #1.
 #   This code relies on the NI VISA interface / driver. 
 #   (Make sure that the proper NI VISA driver has been installed correctly.)
 #
