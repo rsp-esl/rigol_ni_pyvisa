@@ -127,7 +127,7 @@ print ('-'*60)
 
 # get the sampling rate
 sampling_rate = float(cmdRead(':ACQ:SAMP?',0.5).strip())
-print ('Sampling rate: {:.3f} MHz'.format( sampling_rate*10e-6 ) )
+print ('Sampling rate: {:.3f} MHz'.format( sampling_rate*1e-6 ) )
 
 # Retrieve oscilloscope settings 
 time_per_div    = float(cmdRead(":TIM:SCAL?",0.5).strip())
