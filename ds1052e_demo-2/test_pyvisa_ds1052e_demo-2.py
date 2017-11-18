@@ -145,6 +145,7 @@ cmdWrite(":WAV:FORM BYTE")
 cmdWrite(":WAV:POIN:MODE MAX")  
 cmdWrite(":WAV:SOUR CHAN1") # select channel 1 as source
 cmdWrite(":WAV:STAR 1")     # set start address for waveform data reading
+cmdWrite(":WAV:STOP 16384") # set stop address for waveform data reading
 cmdWrite(":WAV:RES")        # reset waveform reading
 cmdWrite(":WAV:BEG")        # start waveform reading
 
