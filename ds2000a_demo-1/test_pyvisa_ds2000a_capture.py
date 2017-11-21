@@ -35,7 +35,7 @@ instr_model = None
 resources   = None
 instr       = None
 
-PROBE_RATIO = 10
+PROBE_RATIO = 10  # use probe 1x or 10x
 ############################################################################
 
 visa_driver = 'visa64'  #  use either 'visa64' or 'visa32' or '@py' or left empty. 
@@ -114,15 +114,16 @@ cmdWrite('SYSTem:REMote')  # change from LOCAL to REMOTE
 ############################################################################
 cmdWrite(':CHAN2:DISP OFF')
 
-cmdWrite(':TIM:SCAL 0.05')   # timescale
+timescale = 0.005
+cmdWrite(':TIM:SCAL %f' % timescale )      # timescale
+cmdWrite(':TIM:OFFS 0.0' )                 # timescale offset in seconds
 cmdWrite(':CHAN1:PROB %d' % PROBE_RATIO )  # Channel 1: use 10x probe
-cmdWrite(':CHAN1:COUP DC')  # Channel 1: use DC coupling
-cmdWrite(':CHAN1:SCAL 1.0') # Channel 1 vertical scale 1 volts
-cmdWrite(':CHAN1:OFFS 0.0') # Channel 1 vertical offset 0 volts
-cmdWrite(':CHAN1:DISP ON')  # Channel 1 on
+cmdWrite(':CHAN1:COUP DC')                 # Channel 1: use DC coupling
+cmdWrite(':CHAN1:SCAL 1.0')                # Channel 1 vertical scale 1 volts
+cmdWrite(':CHAN1:OFFS 0.0')                # Channel 1 vertical offset 0 volts
+cmdWrite(':CHAN1:DISP ON')                 # Channel 1 on
 
 cmdWrite(':RUN')
-cmdWrite(':ACQ:MDEP 14000000')
 time.sleep(2.0)
 cmdWrite(':STOP')
 
@@ -202,7 +203,7 @@ else:
 
 data_len = len(data)
 t_left   = (xref + xorg)
-t_right  = (xref - xorg)
+t_right  = (t_left + data_len * x_inc ) 
 ts = np.linspace( t_left, t_right, num=data_len )
 
 if (ts[-1] < 1e-3):
